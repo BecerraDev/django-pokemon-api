@@ -16,7 +16,8 @@ import os
 
 load_dotenv()
 
-# Creación de SuperUsuario 
+# CREAR SUPER USUARIO
+
 SUPERUSER_USERNAME = os.getenv('SUPERUSER_USERNAME')
 SUPERUSER_PASSWORD = os.getenv('SUPERUSER_PASSWORD')
 
@@ -28,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@n*c#@%bktu(gmdbqk-&&nt2mt_7e+u$xr_vff%n9e^mj!cceq'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = []
 

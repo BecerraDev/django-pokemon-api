@@ -27,20 +27,11 @@ cd django-pokemon-api
 
 docker build -t django-pokemon-api .
 
-3. Crear base de datos. 
-
--> opcion A: python manage.py migrate
--> opcion B: CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
-
-4. Crear super usuario (credenciales)
-
-python create_superuser.py
-
-4. Corre el contenedor
+3. Corre el contenedor
 
 docker run -p 8000:8000 django-pokemon-api
 
-5. Abre el navegador
+4. Abre el navegador
 
 Esto ejecutará el servidor en http://localhost:8000.
 
@@ -51,6 +42,9 @@ Usuario: bbecerra
 Contraseña: adminpassword
 
 // Para cualquier cambio, ingresar /admin. en ese entorno se puede editar o registrar un nuevo usuario, se guarda en base de datos.
+Para crear un super usuario, ingresar este comando:
+
+python create_superuser.py
 
 # Solución: 
 

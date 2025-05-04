@@ -7,8 +7,14 @@ WORKDIR /app
 # Copiar los archivos del proyecto al contenedor
 COPY . /app
 
-# Copiar el archivo .env al contenedor (esto es opcional si lo usas localmente)
-COPY .env .env
+# Copiar el script de creación de .env al contenedor
+COPY create_env.sh /app/create_env.sh
+
+# Darle permisos de ejecución al script
+RUN chmod +x /app/create_env.sh
+
+# Ejecutar el script para crear el .env
+RUN /app/create_env.sh
 
 # Instalar las dependencias necesarias del proyecto
 RUN pip install --no-cache-dir -r requirements.txt
