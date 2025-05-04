@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+
+{% block extra_content %}
+
+<h1>Editar Pokémon</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  <label>Nombre:</label>
+  <input type="text" name="name" value="{{ pokemon.name }}" required><br>
+
+  <label>Tipo:</label>
+  <input type="text" name="type" value="{{ pokemon.type }}" required><br>
+
+  <label>Altura:</label>
+  <input type="number" step="any" name="height" value="{{ pokemon.height }}" required><br>
+
+  <label>Peso:</label>
+  <input type="number" step="any" name="weight" value="{{ pokemon.weight }}" required><br>
+
+  <label>URL Imagen:</label>
+  <input type="url" name="image" value="{{ pokemon.image }}" required><br>
+
+  <button type="submit">Actualizar Pokémon</button>
+</form>
+
+{% if error %}
+  <p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% endblock %}

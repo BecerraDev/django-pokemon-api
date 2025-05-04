@@ -1,0 +1,34 @@
+<!-- Navbar -->
+<!-- Muestra mas datos si usuario esta logeado. -->
+
+<nav class="bg-[#2c3e50] py-7 font-verdana fixed top-0 w-full z-50 shadow">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between">
+        <!-- Título a la izquierda -->
+        <div>
+            <a href="{% url 'home' %}" class="text-white text-2xl font-bold uppercase">Start Poke Api</a>
+            
+            <!-- Nombre de usuario -->
+            {% if request.user.is_authenticated %}
+                <span class="text-sm text-gray-300 italic">Bienvenido,</span>
+                <span class="text-white font-semibold bg-blue-600 px-2 py-1 rounded ml-1 shadow">
+                    {{ user.username|upper }}
+                </span>
+            {% endif %}
+
+        </div>
+        <!-- Enlaces a la derecha -->
+        <div class="space-x-6 font-bold poppins">
+            <a class="text-white " href="{% url 'pokemon' %}">Pokemon</a>
+
+            <!-- Validacion Python si usuario esta autenticado. -->
+            <!-- Se puede usar para agregar funciones, paginas nuevas, etc -->
+            {% if request.user.is_authenticated %}  
+                <a class="text-white" href="{% url 'exit' %}">Salir</a>
+
+            <!-- Si usuario no esta autenticado solicitar login-->
+            {% else %}
+                <a class="text-white" href="{% url 'login' %}">Ingresar</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

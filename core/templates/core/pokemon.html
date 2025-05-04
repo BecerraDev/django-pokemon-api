@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<!--- localhost/Pokemon/ -->
+<!-- -->
+
+<section class="page-section portfolio py-12 pt-12 " id="pokemon_results">
+
+  <h1 class="text-6xl font-bold masthead-heading uppercase scale-y-90 text-center mb-6">POKEMON</h1>
+  <!-- Logo divido-->
+  <div class="flex items-center justify-center space-x-4 py-1 mb-6">
+      <div class="w-1/6 border-t-4"></div>
+      <div class="text-lg"><i class="fas fa-star"></i></div>
+      <div class="w-1/6 border-t-4"></div>
+  </div>
+
+  <!-- Section 1: Filtro de cantidad, filtro por nombre y tipo ( Poke API ) -->
+  {% include 'pokemon_api/pokemon_api.html' %}
+
+  <!-- Section 2: Grafico -->
+  {% include 'pokemon_api/graphics.html' %}
+
+  <!-- Section 3: Agregar nuevo Pokemon -->
+  {% include 'pokemon/add.html' %}
+
+
+</section>
+
+<!-- Section 4: Lista de Pokemones personalizados (globales)-->
+<div id="pokemon-list-container"></div>
+
+
+
+
+<!-- Script esencial para cargar la lista de Pokemones-->
+<!-- Se utilizo este script para renderizar la pagina "list.html"-->
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      url: '/pokemon/list/',
+      method: 'GET',
+      success: function (data) {
+        $('#pokemon-list-container').html(data);
+      },
+      error: function (xhr, status, error) {
+        console.error('Error al cargar Pokémon:', error);
+        $('#pokemon-list-container').html('<p>Error al cargar los Pokémon.</p>');
+      }
+    });
+  });
+</script>
+
+
+{% endblock %}
+

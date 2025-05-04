@@ -1,0 +1,142 @@
+<!-- Section 1: Filtro y búsqueda Poke Api -->
+<div class="max-w-6xl mx-auto px-4 py-8">
+  <form id="filtros" class="mb-4 flex gap-4">
+    <div>
+      <label for="limit">Mostrar:</label>
+      <select name="limit" id="limit" class="border rounded p-1">
+        <option value="10" {% if limit == 10 %}selected{% endif %}>10</option>
+        <option value="20" {% if limit == 20 %}selected{% endif %}>20</option>
+        <option value="30" {% if limit == 30 %}selected{% endif %}>30</option>
+        <option value="40" {% if limit == 40 %}selected{% endif %}>40</option>
+        <option value="50" {% if limit == 50 %}selected{% endif %}>50</option>
+        <option value="60" {% if limit == 60 %}selected{% endif %}>60</option>
+      </select>
+    </div>
+    <div>
+      <label for="type">Filtrar por tipo:</label>
+      <select name="type" id="type" class="border rounded p-1">
+        <option value="">-- Todos --</option>
+        {% for t in types %}
+          <option value="{{ t }}" {% if t == type %}selected{% endif %}>{{ t|capfirst }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+
+  <!-- Búsqueda por nombre -->
+  <div>
+    <label for="search_name">Buscar por nombre:</label>
+    <input type="text" name="search_name" id="search_name" class="border rounded p-1" placeholder="Ej: pikachu">
+  </div>
+
+  <!-- Spinner mientras carga -->
+  <div id="spinner" class="hidden">
+    <div class="h-12 w-12 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
+  </div>
+
+  <!-- Resultados -->
+  <div id="resultados">
+    {% include 'pokemon_api/pokemon_results.html' %}
+  </div>
+</div>
+
+<!-- Script Ajax para manejar la búsqueda -->
+<script>
+  $(document).ready(function () {
+    function aplicarFiltroNombre() {
+      let nombre = $('#search_name').val().toLowerCase();
+      $('.pokemon-item').each(function () {
+        let dataName = $(this).data('name').toLowerCase();
+        if (dataName.includes(nombre)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+      generarGraficoTipos();
+    }
+
+    $('#search_name').on('input', function () {
+      aplicarFiltroNombre();
+    });
+
+    $('#limit, #type').on('change', function () {
+      $('#search_name').val('');
+      aplicarFiltroNombre();
+
+      let limit = $('#limit').val();
+      let type = $('#type').val();
+
+      $('#limit, #type, #search_name').prop('disabled', true);
+      $('#spinner').removeClass('hidden');
+      let startTime = Date.now();
+
+      $.ajax({
+        url: "{% url 'pokemon' %}",
+        data: {
+          limit: limit,
+          type: type
+        },
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        method: 'GET',
+        success: function (data) {
+          $('#resultados').html(data.html);
+          aplicarFiltroNombre();
+          generarGraficoTipos();
+        },
+        complete: function () {
+          let elapsed = Date.now() - startTime;
+          let delay = Math.max(0, 1000 - elapsed);
+
+          setTimeout(() => {
+            $('#spinner').addClass('hidden');
+            $('#limit, #type, #search_name').prop('disabled', false);
+          }, delay);
+        }
+      });
+    });
+
+    aplicarFiltroNombre();
+    generarGraficoTipos();
+  });
+
+  function generarGraficoTipos() {
+    let conteoTipos = {};
+    $('.pokemon-item:visible').each(function () {
+      let tiposStr = $(this).data('types');
+      let tipos = tiposStr.split(',').map(t => t.trim());
+      tipos.forEach(tipo => {
+        conteoTipos[tipo] = (conteoTipos[tipo] || 0) + 1;
+      });
+    });
+
+    let labels = Object.keys(conteoTipos);
+    let data = Object.values(conteoTipos);
+
+    if (window.graficoTipos) {
+      window.graficoTipos.destroy();
+    }
+
+    let ctx = document.getElementById('typeChart').getContext('2d');
+    window.graficoTipos = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          backgroundColor: undefined
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    });
+  }
+</script>
