@@ -1,22 +1,21 @@
 # create_superuser.py
 import os
 import django
-from dotenv import load_dotenv
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "login_python_api.settings")
-load_dotenv()
 django.setup()
 
 from django.contrib.auth.models import User
 
-username = os.getenv("DJANGO_SUPERUSER_USERNAME")
-password = os.getenv("DJANGO_SUPERUSER_PASSWORD")
+# Obtener las variables de entorno
+username = os.getenv("SUPERUSER_USERNAME")
+password = os.getenv("SUPERUSER_PASSWORD")
+email = os.getenv("SUPERUSER_EMAIL", "")  # Si no está en el .env, por defecto será una cadena vacía
 
-if username and password:
-    if not User.objects.filter(username=username).exists():
-        User.objects.create_superuser(username, password)
-        print(f"✅ Superusuario '{username}' creado.")
-    else:
-        print(f"ℹ️ El usuario '{username}' ya existe.")
+# Verificar si el superusuario ya existe
+if not User.objects.filter(username=username).exists():
+    print(f"Creando superusuario '{username}'...")
+    print(f"Creando superusuario con contraseña: {password}")  # Esto imprimirá la contraseña
+    User.objects.create_superuser(username=username, email=email, password=password)
 else:
-    print("⚠️ Faltan variables de entorno.")
+    print(f"El superusuario '{username}' ya existe.")
