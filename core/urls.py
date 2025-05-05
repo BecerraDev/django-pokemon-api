@@ -18,12 +18,13 @@ from django.urls import path
 from .views import home, pokemon, exit, add_pokemon, pokemon_list , edit_pokemon , delete_pokemon
 
 urlpatterns = [
+        # Vistas
     path('', home, name='home'),
     path('pokemon/', pokemon, name='pokemon'),  # Correcto
     path('logout/', exit, name='exit'),
 
     
-        # Pokémon CRUD
+        # Endpoints Pokémon CRUD
     path('pokemon/add/', add_pokemon, name='add_pokemon'),
     path('pokemon/list/', pokemon_list, name='pokemon_list'),
     path('pokemon/edit/<int:pokemon_id>/', edit_pokemon, name='edit_pokemon'),

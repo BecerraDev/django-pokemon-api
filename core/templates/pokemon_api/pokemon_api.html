@@ -1,39 +1,54 @@
 <!-- Section 1: Filtro y búsqueda Poke Api -->
-<div class="max-w-6xl mx-auto px-4 py-8">
-  <form id="filtros" class="mb-4 flex gap-4">
-    <div>
-      <label for="limit">Mostrar:</label>
-      <select name="limit" id="limit" class="border rounded p-1">
-        <option value="10" {% if limit == 10 %}selected{% endif %}>10</option>
-        <option value="20" {% if limit == 20 %}selected{% endif %}>20</option>
-        <option value="30" {% if limit == 30 %}selected{% endif %}>30</option>
-        <option value="40" {% if limit == 40 %}selected{% endif %}>40</option>
-        <option value="50" {% if limit == 50 %}selected{% endif %}>50</option>
-        <option value="60" {% if limit == 60 %}selected{% endif %}>60</option>
-      </select>
-    </div>
-    <div>
-      <label for="type">Filtrar por tipo:</label>
-      <select name="type" id="type" class="border rounded p-1">
-        <option value="">-- Todos --</option>
-        {% for t in types %}
-          <option value="{{ t }}" {% if t == type %}selected{% endif %}>{{ t|capfirst }}</option>
-        {% endfor %}
-      </select>
-    </div>
-  </form>
+<!-- Se implementa script junto con codigo para mayor claridad y no tener conflictos o intervención con otros scripts.-->
 
-  <!-- Búsqueda por nombre -->
-  <div>
-    <label for="search_name">Buscar por nombre:</label>
-    <input type="text" name="search_name" id="search_name" class="border rounded p-1" placeholder="Ej: pikachu">
+<div class="max-w-6xl mx-auto px-4 py-8 align font-poppins">
+  <div class="flex justify-center">
+    <form id="filtros" class="flex flex-wrap gap-4 justify-center items-end w-full max-w-4xl mb-6">
+  
+      <!-- Mostrar límite -->
+      <div class="flex flex-col">
+        <label for="limit" class="mb-1 font-semibold text-gray-700">Mostrar:</label>
+        <select name="limit" id="limit"
+                class="border border-gray-300 rounded-lg px-3 py-2 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+          <option value="10" {% if limit == 10 %}selected{% endif %}>10</option>
+          <option value="20" {% if limit == 20 %}selected{% endif %}>20</option>
+          <option value="30" {% if limit == 30 %}selected{% endif %}>30</option>
+          <option value="40" {% if limit == 40 %}selected{% endif %}>40</option>
+          <option value="50" {% if limit == 50 %}selected{% endif %}>50</option>
+          <option value="60" {% if limit == 60 %}selected{% endif %}>60</option>
+          <option value="70" {% if limit == 70 %}selected{% endif %}>70</option>
+          <option value="80" {% if limit == 80 %}selected{% endif %}>80</option>
+        </select>
+      </div>
+  
+      <!-- Filtrar por tipo -->
+      
+      <div class="flex flex-col">
+        <label for="type" class="mb-1 font-semibold text-gray-700">Filtrar por tipo:</label>
+        <select name="type" id="type"
+                class="border border-gray-300 rounded-lg px-3 py-2 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+          <option value=""> Todos </option>
+          {% for t in types %}
+            <option value="{{ t }}" {% if t == type %}selected{% endif %}>{{ t|capfirst }}</option>
+          {% endfor %}
+        </select>
+      </div>
+  
+      <!-- Buscar por nombre -->
+      <div class="flex flex-col">
+        <label for="search_name" class="mb-1 font-semibold text-gray-700">Buscar por nombre:</label>
+        <input type="text" name="search_name" id="search_name"
+               class="border border-gray-300 rounded-lg px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+               placeholder="Ej: Pikachu">
+      </div>
+  
+    </form>
   </div>
-
-  <!-- Spinner mientras carga -->
-  <div id="spinner" class="hidden">
+  
+  <!-- Spinner -->
+  <div id="spinner" class="flex justify-center hidden">
     <div class="h-12 w-12 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
   </div>
-
   <!-- Resultados -->
   <div id="resultados">
     {% include 'pokemon_api/pokemon_results.html' %}
@@ -41,102 +56,121 @@
 </div>
 
 <!-- Script Ajax para manejar la búsqueda -->
+<!-- Es implementado en la misma pagina para tener una mejor organización.-->
 <script>
   $(document).ready(function () {
+
+    // Función para aplicar filtro de búsqueda por nombre (en tiempo real)
     function aplicarFiltroNombre() {
-      let nombre = $('#search_name').val().toLowerCase();
-      $('.pokemon-item').each(function () {
-        let dataName = $(this).data('name').toLowerCase();
-        if (dataName.includes(nombre)) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      });
-      generarGraficoTipos();
+        let nombre = $('#search_name').val().toLowerCase();  // Obtiene el valor del input en minúsculas
+
+        // Itera por cada elemento .pokemon-item
+        $('.pokemon-item').each(function () {
+            let dataName = $(this).data('name').toLowerCase();  // Obtiene el nombre del Pokémon desde el atributo data-name
+            if (dataName.includes(nombre)) {
+                $(this).show();  // Muestra si coincide
+            } else {
+                $(this).hide();  // Oculta si no coincide
+            }
+        });
+
+        generarGraficoTipos(); // Actualiza el gráfico con los resultados visibles
     }
 
+    // Detecta cuando el usuario escribe en el input de búsqueda
     $('#search_name').on('input', function () {
-      aplicarFiltroNombre();
+        aplicarFiltroNombre();  // Aplica el filtro mientras escribe
     });
 
+    // Cuando cambian los selects de "limit" o "type"
     $('#limit, #type').on('change', function () {
-      $('#search_name').val('');
-      aplicarFiltroNombre();
+        $('#search_name').val('');  // Limpia el campo de búsqueda
+        aplicarFiltroNombre();      // Aplica filtro sin nombre (todos los visibles según tipo/límite)
 
-      let limit = $('#limit').val();
-      let type = $('#type').val();
+        let limit = $('#limit').val();  // Obtiene valor actual de límite
+        let type = $('#type').val();    // Obtiene valor actual de tipo
 
-      $('#limit, #type, #search_name').prop('disabled', true);
-      $('#spinner').removeClass('hidden');
-      let startTime = Date.now();
+        // Deshabilita inputs y muestra spinner
+        $('#limit, #type, #search_name').prop('disabled', true);
+        $('#spinner').removeClass('hidden');
 
-      $.ajax({
-        url: "{% url 'pokemon' %}",
-        data: {
-          limit: limit,
-          type: type
-        },
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        method: 'GET',
-        success: function (data) {
-          $('#resultados').html(data.html);
-          aplicarFiltroNombre();
-          generarGraficoTipos();
-        },
-        complete: function () {
-          let elapsed = Date.now() - startTime;
-          let delay = Math.max(0, 1000 - elapsed);
+        let startTime = Date.now();  // Marca tiempo de inicio
 
-          setTimeout(() => {
-            $('#spinner').addClass('hidden');
-            $('#limit, #type, #search_name').prop('disabled', false);
-          }, delay);
-        }
-      });
+        // Petición AJAX a la vista 'pokemon' con nuevos filtros
+        $.ajax({
+            url: "{% url 'pokemon' %}",
+            data: {
+                limit: limit,
+                type: type
+            },
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'  // Indica que es una petición AJAX
+            },
+            method: 'GET',
+
+            success: function (data) {
+                $('#resultados').html(data.html);  // Inserta los nuevos Pokémon en el contenedor
+                aplicarFiltroNombre();             // Vuelve a aplicar filtro por nombre
+                generarGraficoTipos();             // Actualiza gráfico con nuevos resultados
+            },
+
+            complete: function () {
+                let elapsed = Date.now() - startTime;          // Tiempo total que demoró
+                let delay = Math.max(0, 1000 - elapsed);       // Garantiza que el spinner dure al menos 1 segundo
+
+                // Oculta spinner y habilita inputs nuevamente
+                setTimeout(() => {
+                    $('#spinner').addClass('hidden');
+                    $('#limit, #type, #search_name').prop('disabled', false);
+                }, delay);
+            }
+        });
     });
 
-    aplicarFiltroNombre();
-    generarGraficoTipos();
-  });
+    aplicarFiltroNombre();   // Aplica el filtro por nombre cuando se carga la página
+    generarGraficoTipos();   // Genera el gráfico inicial con los elementos cargados
+});
 
-  function generarGraficoTipos() {
-    let conteoTipos = {};
+// Función para generar el gráfico de tipos con Chart.js
+function generarGraficoTipos() {
+    let conteoTipos = {};  // Objeto para contar cada tipo
+
+    // Recorre solo los Pokémon visibles
     $('.pokemon-item:visible').each(function () {
-      let tiposStr = $(this).data('types');
-      let tipos = tiposStr.split(',').map(t => t.trim());
-      tipos.forEach(tipo => {
-        conteoTipos[tipo] = (conteoTipos[tipo] || 0) + 1;
-      });
+        let tiposStr = $(this).data('types');  // Obtiene los tipos desde el atributo data-types
+        let tipos = tiposStr.split(',').map(t => t.trim());  // Separa y limpia los tipos
+        tipos.forEach(tipo => {
+            conteoTipos[tipo] = (conteoTipos[tipo] || 0) + 1;  // Suma 1 al contador del tipo
+        });
     });
 
-    let labels = Object.keys(conteoTipos);
-    let data = Object.values(conteoTipos);
+    let labels = Object.keys(conteoTipos);  // Etiquetas del gráfico
+    let data = Object.values(conteoTipos);  // Valores (cantidad por tipo)
 
+    // Si ya existe un gráfico anterior, lo destruye antes de crear uno nuevo
     if (window.graficoTipos) {
-      window.graficoTipos.destroy();
+        window.graficoTipos.destroy();
     }
 
+    // Crea un nuevo gráfico tipo pastel
     let ctx = document.getElementById('typeChart').getContext('2d');
     window.graficoTipos = new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: labels,
-        datasets: [{
-          data: data,
-          backgroundColor: undefined
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom'
-          }
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: undefined  // Color se puede personalizar más adelante
+            }]
+        },
+        options: {
+            responsive: true,  // Se adapta al tamaño del contenedor
+            plugins: {
+                legend: {
+                    position: 'bottom'  // Muestra la leyenda abajo del gráfico
+                }
+            }
         }
-      }
     });
-  }
+}
 </script>

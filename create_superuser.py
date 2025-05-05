@@ -14,8 +14,6 @@ email = os.getenv("SUPERUSER_EMAIL", "")  # Si no está en el .env, por defecto 
 
 # Verificar si el superusuario ya existe
 if not User.objects.filter(username=username).exists():
-    print(f"Creando superusuario '{username}'...")
-    print(f"Creando superusuario con contraseña: {password}")  # Esto imprimirá la contraseña
     User.objects.create_superuser(username=username, email=email, password=password)
 else:
     print(f"El superusuario '{username}' ya existe.")

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  //- Modal expandir informacion de cartas POKEMON. 
     // Abrir modal con delegación
     $('body').on('click', '.pokemon-item', function () {
       const card = $(this);

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   django-pokemon-api:
     build: .
@@ -7,6 +5,13 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+  
     environment:
       - PYTHONUNBUFFERED=1
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+      - SECRET_KEY=your-secret-key
+      - DEBUG=True
+      - SUPERUSER_USERNAME=bbecerra
+      - SUPERUSER_PASSWORD=becerra123
+      - SUPERUSER_EMAIL=byron.becerra.aravena@gmail.com
+    
+    command: ["sh", "entrypoint.sh"]

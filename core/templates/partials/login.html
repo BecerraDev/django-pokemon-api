@@ -1,13 +1,30 @@
-<!-- Login en Modal para ser reutilizable -->
+<!-- Login MODAL usado para ser mas interactivo. -->
+
 
 {% if not request.user.is_authenticated %}
-<div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 hidden">
+<div id="loginModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 {% if form.errors %}flex{% else %}hidden{% endif %}">
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
         <h2 class="text-2xl font-bold mb-4 center">Iniciar sesión</h2>
+
+        <!-- Acá se maneja los errores usando AuthenticationForm de DJANGO -->
+        {% if form.errors %}
+            <div class="text-red-600 text-sm mb-4">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Se rellena los campos y se manda los datos para validar usuario-->
         <form method="POST" action="{% url 'login' %}">
             {% csrf_token %}
             <div class="mb-4">
-                <input type="text" name="username" placeholder="Nombre de usuario" class="w-full p-2 border rounded" required>
+                <input type="text" name="username" placeholder="Nombre de usuario" class="w-full p-2 border rounded" value="{{ request.POST.username }}" required>
             </div>
             <div class="mb-4">
                 <input type="password" name="password" placeholder="Contraseña" class="w-full p-2 border rounded" required>
@@ -22,7 +39,7 @@
 {% endif %}
 
 
-<!-- Script para activar el modal -->
+<!-- Script para activar modals.  -->
 <script>
     $(document).ready(function () {
         const modal = $('#loginModal');
@@ -36,4 +53,4 @@
             modal.addClass('hidden');
         });
     });
-</script>
+</script>   

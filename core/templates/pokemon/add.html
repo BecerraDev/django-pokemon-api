@@ -1,9 +1,9 @@
 <section class="py-16 bg-white" id="contact">
   <div class="max-w-3xl mx-auto px-6">
-    <!-- Heading -->
+    <!-- Titutlo -->
     <h2 class="text-6xl font-bold text-center text-gray-800 uppercase mb-6">Agregar Pokémon</h2>
 
-    <!-- Icon Divider -->
+    <!-- Iconos  -->
     <div class="flex items-center justify-center mb-10">
       <div class="w-16 h-px bg-gray-400"></div>
       <div class="mx-4 text-gray-500 text-xl"><i class="fas fa-star"></i></div>
@@ -40,47 +40,3 @@
     </form>
   </div>
 </section>
-
-<!-- Script para validación -->
-<script>
-  function validateForm() {
-    const name = document.querySelector('input[name="name"]').value.trim();
-    const type = document.querySelector('input[name="type"]').value.trim();
-    const image = document.querySelector('input[name="image"]').value.trim();
-
-    if (!name || !type || !image) {
-      alert("Por favor, completa todos los campos.");
-      return false;
-    }
-
-    // Validación básica de URL
-    const urlPattern = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))$/i;
-    if (!urlPattern.test(image)) {
-      alert("Por favor, ingresa una URL válida para la imagen.");
-      return false;
-    }
-
-    return true;
-  }
-
-  function showAddingMessage(form) {
-    const message = document.createElement('div');
-    message.innerText = 'Agregando Pokémon...';
-    message.className = 'fixed top-5 left-1/2 transform -translate-x-1/2 bg-green-100 text-green-800 px-4 py-2 rounded shadow z-50';
-    document.body.appendChild(message);
-
-    setTimeout(() => {
-      form.submit();
-    }, 150);
-  }
-
-  function handleFormSubmit(form) {
-    if (!validateForm()) {
-      return false;
-    }
-
-    showAddingMessage(form);
-    return false; // Previene envío inmediato, lo hace showAddingMessage
-  }
-  
-</script>
