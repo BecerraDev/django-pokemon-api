@@ -19,19 +19,19 @@ Requisitos previos:
 - Tener instalado DOCKER DESKTOP y DOCKER COMPOSER en sistema.
 - Tener DOCKER DESKTOP abierto.
 
-1. Crear carpeta y clonar este repositorio desde CMD. 
+1. Clonar este repositorio desde la terminal ( CMD ): 
 
    git clone https://github.com/BecerraDev/django-pokemon-api
 
-2. Acceder al directorio desde CMD.
+2. Acceder al directorio del proyecto:
    
    cd django-pokemon-api
 
-3. Construye la imagen
+3. Construye y levanta los contenedores con Docker Compose:
 
    docker-compose up --build
 
-4. Abre el navegador y accede a local host
+4. Abre tú navegador y accede a:
 
    [http://localhost:8000](http://localhost:8000)
 
