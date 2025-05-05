@@ -19,11 +19,11 @@ Requisitos previos:
 - Tener instalado DOCKER DESKTOP y DOCKER COMPOSER en sistema.
 - Tener DOCKER DESKTOP abierto.
 
-1. Clonar este repositorio
+1. Crear carpeta y clonar este repositorio desde CMD. 
 
    git clone https://github.com/BecerraDev/django-pokemon-api
 
-2. Acceder al directorio.
+2. Acceder al directorio desde CMD.
    
    cd django-pokemon-api
 
