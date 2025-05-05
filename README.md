@@ -53,9 +53,11 @@ La búsqueda y los filtros cuentan con validaciones. Si el usuario realiza una b
 Más abajo, se ofrece la opción de agregar un Pokémon personalizado. Para que el Pokémon tenga una imagen asociada, el usuario debe proporcionar una URL válida que comience con http y termine en .png. Posteriormente, el sistema lista todos los Pokémon personalizados agregados.
 
 **Para crear un superusuario, ejecuta el siguiente comando en la terminal:**
+
 python create_superuser.py Nota: Asegúrate de tener Python correctamente instalado en tu entorno de desarrollo.
 
 **Para gestionar los usuarios, accede a la interfaz de administración de Django en la siguiente URL:**
+
 localhost:8000/admin
 
 # Solución: 
