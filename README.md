@@ -95,44 +95,75 @@ Por motivos de tiempo, las siguientes funcionalidades quedaron sin implementaci�
   Algunos mensajes en pantalla están pendientes, así como mantener la posición del scroll después de guardar o eliminar un Pokémon.
 
 ## Estructura del desarrollo
-# Dia 1. 
-En este día me enfoque en conocer Python DJANGO. 
-Me enfoque en crear un mapa visual de como sera el resto de día 
-Se crea contenedor GIT HUB
+# Día 1
 
-# Dia 2. 
-Utilice tutoriales para crear un AUTH USER. 
-Me enfoque en dejar el login completamente funcional y validar usuarios con PYTHON DJANGO. 
-También en separar carpetas en codigo reutilizable y html base usando buenas practicas. (partials, html base) 
-Comentar codigo
+Investigación sobre Python Django.
 
-# Día 3 
-Realicé una maqueta de funciones en BACKEND. 
-Conexión de API externa, listado, script de AJAX.
-Creación de CRUD (creación de tabla pokemon para guardar pokemones personalizados)
-Prueba en cada función
+Creación de un mapa visual para planificar el desarrollo del proyecto.
+
+Creación de repositorio en GitHub.
+
+# Día 2
+
+Implementación de Auth User con Django.
+
+Desarrollo del login funcional y validación de usuarios.
+
+Organización del código en carpetas reutilizables y creación de HTML base usando buenas prácticas (partials, base HTML).
+
+Comentarios en el código.
+
+# Día 3
+
+Desarrollo de maqueta de funciones en backend.
+
+Conexión con API externa, listado y creación de script AJAX.
+
+Creación del CRUD para gestionar Pokémon personalizados (tabla en base de datos).
+
+Pruebas para cada función implementada.
 
 # Día 4
-Me enfoque en crear elementos visuales con TAILWIND 
-Adaptar datos de backend a elementos visuales
-Mensajes interactivos para usuarios (MODALS, SCRIPT AJAX, PAGINA INTERACTIVA)
+
+Desarrollo de elementos visuales con Tailwind CSS.
+
+Adaptación de los datos del backend a los elementos visuales.
+
+Implementación de mensajes interactivos para usuarios (modals, script AJAX, página interactiva).
 
 # Día 5
-Correciones de bugs, comentar codigo faltante, revisiones de scripts
-Separación de scripts en otro archivo, eliminar cosas redundantes
-Buscar errores, realizar pruebas de backend
+
+Corrección de bugs.
+
+Comentarios en el código faltante.
+
+Revisión de scripts y eliminación de código redundante.
+
+Realización de pruebas en backend.
 
 # Día 6
-Seguir corrigiendo bugs, implementar mas cosas visuales y algunos errores que surgieron el día anterior con la corección 
-Renderizar paginas, centrar elementos, no hardcodear codigo y que el backend se encarge de listar pokemones externos
--> Proyecto terminado. 
+
+Continuación de corrección de bugs.
+
+Implementación de más elementos visuales.
+
+Corrección de errores surgidos el día anterior.
+
+Renderización de páginas, alineación de elementos y evitar hardcoding en el código, asegurando que el backend maneje el listado de Pokémon externos.
 
 # Día 7
-Se crea DockerFile
-Se crea contenedores
-Se guarda en GIT HUB 
-Se realiza prueba en otro entorno
-Se envia proyecto para evaluación
+
+Creación de Dockerfile.
+
+Creación de contenedores y despliegue.
+
+Subida del proyecto a GitHub.
+
+Pruebas del proyecto en otro entorno.
+
+Envío del proyecto para evaluación.
+
+
 
 
 
