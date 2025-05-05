@@ -20,7 +20,7 @@ Requisitos previos:
 
 1. Clonar este repositorio
 
-   git clone https://github.com/tu-usuario/django-pokemon-api.git
+   git clone https://github.com/BecerraDev/django-pokemon-api
 
 2. Acceder al directorio.
    
