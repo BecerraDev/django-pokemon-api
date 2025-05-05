@@ -48,6 +48,18 @@ python create_superuser.py Nota: Asegúrate de tener Python correctamente instal
 
 localhost:8000/admin
 
+# Guia de uso.
+
+Al acceder al servidor en localhost:8000, se redirige automáticamente a la página de inicio (Home). En esta página, se presenta un modal solicitando al usuario iniciar sesión. El modal puede cerrarse en cualquier momento, permitiendo al usuario continuar navegando con normalidad. Sin embargo, solo los usuarios autenticados tienen acceso a las funcionalidades relacionadas con la base de datos. Las vistas protegidas, como la de /pokemon, requieren autenticación.
+
+*Una vez que el usuario ingresa sus credenciales correctamente y accede a la opción "Pokemon" en el Navbar, el sistema despliega una landing page que incluye filtros y una opción de búsqueda de Pokémon conectada a la Poke API.*
+
+La búsqueda y los filtros cuentan con validaciones. Si el usuario realiza una búsqueda por nombre y luego selecciona otro filtro, la búsqueda se reinicia automáticamente para evitar errores. Durante la búsqueda, los selectores de filtro se bloquean y se muestra un ícono de carga para indicar que el sistema está procesando la solicitud.
+
+*El usuario puede seleccionar una carta de Pokémon para ver más detalles sobre el mismo. Los datos obtenidos de la Poke API se visualizan en un gráfico, el cual se actualiza dinámicamente con la nueva información.*
+
+Más abajo, se ofrece la opción de agregar un Pokémon personalizado. Para que el Pokémon tenga una imagen asociada, el usuario debe proporcionar una URL válida que comience con http y termine en .png. Posteriormente, el sistema lista todos los Pokémon personalizados agregados.
+
 # Solución: 
 
 La solución fue diseñada con un enfoque en el rendimiento y la experiencia del usuario, priorizando una navegación fluida dentro de una sola página.
