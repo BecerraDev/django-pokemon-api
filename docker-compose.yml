@@ -7,7 +7,7 @@ services:
       - "8000:8000"
     environment:
       - PYTHONUNBUFFERED=1
-      - SECRET_KEY=your-secret-key
+      - SECRET_KEY=django-insecure-1z9m$@l0)k!9j^u7@4w2+f5l8t3t5$!fxti&2p-z00=0g+@pmp
       - DEBUG=True
       - SUPERUSER_USERNAME=bbecerra
       - SUPERUSER_PASSWORD=becerra123
