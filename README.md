@@ -40,14 +40,6 @@ Requisitos previos:
 - Usuario: bbecerra
 - Contraseña: becerra123
 
-**Para crear un superusuario, ejecuta el siguiente comando en la terminal:**
-
-python create_superuser.py Nota: Asegúrate de tener Python correctamente instalado en tu entorno de desarrollo.
-
-**Para gestionar los usuarios, accede a la interfaz de administración de Django en la siguiente URL:**
-
-localhost:8000/admin
-
 # Guia de uso:
 
 Al acceder al servidor en localhost:8000, se redirige automáticamente a la página de inicio (Home). En esta página, se presenta un modal solicitando al usuario iniciar sesión. El modal puede cerrarse en cualquier momento, permitiendo al usuario continuar navegando con normalidad. Sin embargo, solo los usuarios autenticados tienen acceso a las funcionalidades relacionadas con la base de datos. Las vistas protegidas, como la de /pokemon, requieren autenticación.
@@ -59,6 +51,12 @@ La búsqueda y los filtros cuentan con validaciones. Si el usuario realiza una b
 *El usuario puede seleccionar una carta de Pokémon para ver más detalles sobre el mismo. Los datos obtenidos de la Poke API se visualizan en un gráfico, el cual se actualiza dinámicamente con la nueva información.*
 
 Más abajo, se ofrece la opción de agregar un Pokémon personalizado. Para que el Pokémon tenga una imagen asociada, el usuario debe proporcionar una URL válida que comience con http y termine en .png. Posteriormente, el sistema lista todos los Pokémon personalizados agregados.
+
+**Para crear un superusuario, ejecuta el siguiente comando en la terminal:**
+python create_superuser.py Nota: Asegúrate de tener Python correctamente instalado en tu entorno de desarrollo.
+
+**Para gestionar los usuarios, accede a la interfaz de administración de Django en la siguiente URL:**
+localhost:8000/admin
 
 # Solución: 
 
