@@ -34,14 +34,14 @@ Ejecutar proyecto localmente en http://localhost:8000.
 
 # Credenciales:
 
-Usuario: bbecerra
-Contraseña: becerra123
+- Usuario: bbecerra
+- Contraseña: becerra123
 
-// Para crear un super usuario, ingresar este comando:
+**Para crear un super usuario, ingresar este comando:**
 
 python create_superuser.py
 
-// Revisar usuarios, ingresar este comando. ( es necesario estar logeado )
+**Revisar usuarios, ingresar este comando. ( es necesario estar logeado )**
 
 localhost:8000/admin
 
@@ -53,18 +53,18 @@ Tras evaluar entre el uso de Python tradicional o una API REST, se eligió utili
 
 El sistema puede funcionar sin conexión a la API externa si ya se ha iniciado previamente localmente
 
-# Funcionalidades principales: 
+## Funcionalidades principales
 
--> Filtro por tipo
--> Filtro por nombre
--> Aplicación de limitaciones sobre los datos obtenidos
--> Actualización dinamica de gráfico segun los nuevos datos. 
--> Autenticación de usuario (login/logout) usando django.contrib.auth.
--> Protección de vistas mediante LoginRequired (solo usuarios autenticados acceden a funcionalidades específicas)
--> Manejador de errores para la API externa (el sistema puede seguir funcionando offline o si la API externa no está disponible)
--> Creación de CRUD para Pokemon personalizado ( creación, lista, actualización y borrado )
--> Docker
--> Endpoints de CRUD POKEMON PERSONALIZADO (revisar urls.py)
+- **Filtro por tipo**
+- **Filtro por nombre**
+- **Aplicación de limitaciones sobre los datos obtenidos**
+- **Actualización dinámica de gráfico según los nuevos datos**
+- **Autenticación de usuario** (login/logout) usando `django.contrib.auth`
+- **Protección de vistas** mediante `LoginRequired` (solo usuarios autenticados acceden a funcionalidades específicas)
+- **Manejador de errores para la API externa** (el sistema puede seguir funcionando offline o si la API externa no está disponible)
+- **CRUD para Pokémon personalizado** (creación, listado, actualización y eliminación)
+- **Docker**
+- **Endpoints de CRUD para Pokémon personalizado** (revisar `urls.py`)
 
 ## Funcionalidades pendientes
 
