@@ -17,7 +17,7 @@ Tecnologías utilizadas
 Requisitos previos: 
 
 - Tener instalado DOCKER DESKTOP y DOCKER COMPOSER en sistema.
-- Tener DOCKER DESKTOP abierto.
+- Asegurarse de que Docker Desktop esté abierto y en ejecución antes de iniciar el proyecto.
 
 1. Clonar este repositorio desde la terminal ( CMD ): 
 
