@@ -40,11 +40,11 @@ Requisitos previos:
 - Usuario: bbecerra
 - Contraseña: becerra123
 
-**Para crear un super usuario, ingresar este comando:**
+**Para crear un superusuario, ejecuta el siguiente comando en la terminal:**
 
-python create_superuser.py
+python create_superuser.py Nota: Asegúrate de tener Python correctamente instalado en tu entorno de desarrollo.
 
-**Revisar usuarios, ingresar este comando. ( es necesario estar logeado )**
+**Para gestionar los usuarios, accede a la interfaz de administración de Django en la siguiente URL:**
 
 localhost:8000/admin
 
