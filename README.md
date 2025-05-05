@@ -48,7 +48,7 @@ python create_superuser.py Nota: Asegúrate de tener Python correctamente instal
 
 localhost:8000/admin
 
-# Guia de uso.
+# Guia de uso:
 
 Al acceder al servidor en localhost:8000, se redirige automáticamente a la página de inicio (Home). En esta página, se presenta un modal solicitando al usuario iniciar sesión. El modal puede cerrarse en cualquier momento, permitiendo al usuario continuar navegando con normalidad. Sin embargo, solo los usuarios autenticados tienen acceso a las funcionalidades relacionadas con la base de datos. Las vistas protegidas, como la de /pokemon, requieren autenticación.
 
