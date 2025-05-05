@@ -16,7 +16,8 @@ Tecnologías utilizadas
 
 Requisitos previos: 
 
-- Tener instalado DOCKER y DOCKER COMPOSER en sistema. 
+- Tener instalado DOCKER DESKTOP y DOCKER COMPOSER en sistema.
+- Tener DOCKER DESKTOP abierto.
 
 1. Clonar este repositorio
 
