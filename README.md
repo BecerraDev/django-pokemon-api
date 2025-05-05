@@ -66,14 +66,18 @@ El sistema puede funcionar sin conexión a la API externa si ya se ha iniciado p
 -> Docker
 -> Endpoints de CRUD POKEMON PERSONALIZADO (revisar urls.py)
 
-# Funcionalidades no completadas: 
+## Funcionalidades pendientes
 
-Por motivos de tiempo, las siguientes funcionalidades quedaron pendientes de implementación completa:
+Por motivos de tiempo, las siguientes funcionalidades quedaron sin implementación completa:
 
--> Registro de nuevo usuario frontend. (Ingresar localhost:8000/admin -> usuarios -> editar, eliminar, cambiar usuario / o aplicar script (python create_superuser.py))
--> Editar Pokemon personalizado. (Codigo esta implementado pero no mostrado en frontend)
--> Relación Usuario - Pokemon personalizado en Base de Datos. (Falto tabla intermedia para conectar usuario a pokemon personalizado (Actualmente son globales)) 
--> Algunos mensajes en pantalla. (Tenía pensado en mantener el scroll en cada guardado y eliminado de pokemon personalizado)
+- **Registro de nuevo usuario desde el frontend**  
+  Actualmente, los usuarios deben crearse desde el panel de administración (`localhost:8000/admin`) o ejecutando el script `python create_superuser.py`.
+- **Edición de Pokémon personalizado**  
+  El código backend está implementado, pero no está conectado al frontend.
+- **Relación Usuario ↔ Pokémon personalizado**  
+  Falta una tabla intermedia que asocie cada Pokémon personalizado con su usuario. Actualmente, todos los Pokémon personalizados son globales.
+- **Mejoras en la experiencia de usuario (UX)**  
+  Algunos mensajes en pantalla están pendientes, así como mantener la posición del scroll después de guardar o eliminar un Pokémon.
 
 ## Estructura del desarrollo
 # Dia 1. 
