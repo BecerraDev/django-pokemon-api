@@ -94,6 +94,12 @@ Por motivos de tiempo, las siguientes funcionalidades quedaron sin implementaci�
 - **Mejoras en la experiencia de usuario (UX)**  
   Algunos mensajes en pantalla están pendientes, así como mantener la posición del scroll después de guardar o eliminar un Pokémon.
 
+# El procesamiento de los datos obtenidos desde la POKE API se realiza en dos etapas:
+
+En el backend (Django): los datos son filtrados y transformados para entregar al frontend solo la información relevante. Esto incluye la creación de estructuras específicas (como arrays con los datos procesados).
+
+En el frontend: se llevan a cabo cálculos adicionales, ordenamientos y visualizaciones (por ejemplo, conteos por tipo de Pokémon, estadísticas promedio, etc.). Esto me permitió aprovechar herramientas de visualización como gráficos o tablas interactivas usando JavaScript. Esta separación busca mantener el backend liviano, actuando como proveedor de datos procesados, y delegar la parte visual y de análisis dinámico al navegador del usuario.
+
 ## Estructura del desarrollo
 # Día 1
 
