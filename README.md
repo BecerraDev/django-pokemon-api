@@ -41,7 +41,7 @@ Requisitos previos:
 - Usuario: bbecerra
 - Contraseña: becerra123
 
-Nota: El tiempo de respuesta puede variar, ya que el filtrado y la búsqueda dependen de la API externa (PokeAPI).
+Nota: El filtrado y la búsqueda de datos desde la PokeAPI pueden tardar algunos segundos, ya que dependen de la velocidad de respuesta de la API externa.
 
 # Guia de uso:
 
