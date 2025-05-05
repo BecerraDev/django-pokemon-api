@@ -25,33 +25,31 @@ cd django-pokemon-api
 
 2. Construye la imagen
 
-docker build -t django-pokemon-api .
+docker-compose up --build
 
-3. Corre el contenedor
+3. Abre el navegador
 
-docker run -p 8000:8000 django-pokemon-api
-
-4. Abre el navegador
-
-Esto ejecutará el servidor en http://localhost:8000.
+Ejecutar proyecto localmente en http://localhost:8000.
 
 
 # Credenciales:
 
 Usuario: bbecerra
-Contraseña: adminpassword
+Contraseña: becerra123
 
-// Para cualquier cambio, ingresar /admin. en ese entorno se puede editar o registrar un nuevo usuario, se guarda en base de datos.
-Para crear un super usuario, ingresar este comando:
+// Para crear un super usuario, ingresar este comando:
 
 python create_superuser.py
 
+// Revisar usuarios, ingresar este comando. ( es necesario estar logeado )
+
+localhost:8000/admin
+
 # Solución: 
 
-La solución fue pensada para rendimiento y experiencia de usuario, con navegación fluida en una sola página.
-No se utilizaron frameworks SPA ( VUE ) por decisión de simplicidad para esta prueba (Tuve que decidir si usar PYTHON TRADICIONAL O API REST).
-Finalmente utilice Python Tradicional con uso de buenas practicas en template para reutilizar codigo. 
-
+La solución fue diseñada con un enfoque en el rendimiento y la experiencia del usuario, priorizando una navegación fluida dentro de una sola página.
+Se optó por no utilizar frameworks SPA como Vue.js, en favor de mantener la simplicidad de la implementación para esta prueba técnica.
+Tras evaluar entre el uso de Python tradicional o una API REST, se eligió utilizar Django con renderizado del lado del servidor. Además, se aplicaron buenas prácticas mediante el uso de templates reutilizables, lo que permite mantener el código limpio, organizado y fácil de mantener.
 
 El sistema puede funcionar sin conexión a la API externa si ya se ha iniciado previamente localmente
 
@@ -65,12 +63,14 @@ El sistema puede funcionar sin conexión a la API externa si ya se ha iniciado p
 -> Protección de vistas mediante LoginRequired (solo usuarios autenticados acceden a funcionalidades específicas)
 -> Manejador de errores para la API externa (el sistema puede seguir funcionando offline o si la API externa no está disponible)
 -> Creación de CRUD para Pokemon personalizado ( creación, lista, actualización y borrado )
+-> Docker
+-> Endpoints de CRUD POKEMON PERSONALIZADO (revisar urls.py)
 
 # Funcionalidades no completadas: 
 
 Por motivos de tiempo, las siguientes funcionalidades quedaron pendientes de implementación completa:
 
--> Registro de nuevo usuario frontend. ( Ingresar localhost:8000/admin -> usuarios -> editar, eliminar, cambiar usuario)
+-> Registro de nuevo usuario frontend. (Ingresar localhost:8000/admin -> usuarios -> editar, eliminar, cambiar usuario / o aplicar script (python create_superuser.py))
 -> Editar Pokemon personalizado. (Codigo esta implementado pero no mostrado en frontend)
 -> Relación Usuario - Pokemon personalizado en Base de Datos. (Falto tabla intermedia para conectar usuario a pokemon personalizado (Actualmente son globales)) 
 -> Algunos mensajes en pantalla. (Tenía pensado en mantener el scroll en cada guardado y eliminado de pokemon personalizado)
