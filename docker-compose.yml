@@ -1,11 +1,10 @@
 services:
-  django-pokemon-api:
+  web:
     build: .
+    volumes:
+      - .:/app  # Monta todo el proyecto (incluye tu base de datos)
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
-  
     environment:
       - PYTHONUNBUFFERED=1
       - SECRET_KEY=your-secret-key
@@ -13,5 +12,4 @@ services:
       - SUPERUSER_USERNAME=bbecerra
       - SUPERUSER_PASSWORD=becerra123
       - SUPERUSER_EMAIL=byron.becerra.aravena@gmail.com
-    
-    command: ["sh", "entrypoint.sh"]
+    command: ["sh", "-c", "python manage.py migrate && python create_superuser.py && python manage.py runserver 0.0.0.0:8000"]
