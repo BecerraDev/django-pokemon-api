@@ -1,4 +1,4 @@
-# Usar una imagen base oficial de Python 
+# Usar una imagen base oficial de Python
 FROM python:3.10
 
 # Establecer un directorio de trabajo dentro del contenedor
@@ -7,14 +7,8 @@ WORKDIR /app
 # Copiar los archivos del proyecto al contenedor
 COPY . /app
 
-# Copiar el script de creación de .env al contenedor
-COPY create_env.sh /app/create_env.sh
-
-# Darle permisos de ejecución al script
-RUN chmod +x /app/create_env.sh
-
-# Ejecutar el script para crear el .env
-RUN /app/create_env.sh
+# Crear el archivo .env si no existe
+RUN if [ ! -f .env ]; then cp .env.example .env && echo ".env creado con éxito"; fi
 
 # Instalar las dependencias necesarias del proyecto
 RUN pip install --no-cache-dir -r requirements.txt
