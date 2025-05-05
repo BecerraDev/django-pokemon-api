@@ -20,19 +20,19 @@ Requisitos previos:
 
 1. Clonar este repositorio
 
-git clone https://github.com/tu-usuario/django-pokemon-api.git
+   git clone https://github.com/tu-usuario/django-pokemon-api.git
 
 2. Acceder al directorio.
    
-cd django-pokemon-api
+   cd django-pokemon-api
 
 3. Construye la imagen
 
-docker-compose up --build
+   docker-compose up --build
 
-4. Abre el navegador
+4. Abre el navegador y accede a local host
 
-http://localhost:8000.
+   [http://localhost:8000](http://localhost:8000)
 
 
 # Credenciales:
