@@ -41,7 +41,7 @@ Requisitos previos:
 - Usuario: bbecerra
 - Contraseña: becerra123
 
-Nota: El filtrado y la búsqueda de datos desde la PokeAPI pueden tardar algunos segundos, ya que dependen de la velocidad de respuesta de la API externa.
+Nota: El filtrado y la búsqueda de datos desde la PokéAPI pueden tardar algunos segundos, ya que dependen de la velocidad de respuesta del servicio externo. // Algunas imágenes de Pokémon pueden no cargarse correctamente debido a posibles mantenimientos o problemas intermitentes en el servidor de la API. Realicé el test varias veces en distintos entornos y, al momento de la entrega, todo funcionaba correctamente. Actualmente, 3 de los 20 Pokémon cargados presentan errores en las imágenes, aunque los datos siguen siendo correctos.
 
 # Guia de uso:
 
