@@ -41,7 +41,7 @@ Requisitos previos:
 - Usuario: bbecerra
 - Contraseña: becerra123
 
-Nota: El filtrado y la búsqueda de datos desde la PokéAPI pueden tardar algunos segundos, ya que dependen de la velocidad de respuesta del servicio externo. / Algunas imágenes de Pokémon pueden no cargarse correctamente debido a posibles problemas temporales en la API. Los datos obtenidos siguen siendo correctos.
+Nota: El filtrado y la búsqueda de datos desde la PokéAPI pueden tardar algunos segundos, ya que dependen de la velocidad de respuesta del servicio externo. / Algunas imágenes de Pokémon pueden no cargarse correctamente debido a posibles problemas temporales en la API (Sucede en la tarde o noche) Los datos obtenidos siguen siendo correctos.
 
 # Guia de uso:
 
