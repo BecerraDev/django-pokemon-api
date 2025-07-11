@@ -12,7 +12,7 @@ Tecnologías utilizadas
 - Tailwind
 - Ajax + JQUERY
 
-### INSTALACIÓN (one-click setup) ###
+# INSTALACIÓN (one-click setup)
 
 Requisitos previos: 
 
