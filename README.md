@@ -14,10 +14,12 @@ Tecnologías utilizadas
 
 # INSTALACIÓN (one-click setup)
 
-Requisitos previos: 
+**Requisitos previos:**
 
 - Tener instalado DOCKER DESKTOP y DOCKER COMPOSER en sistema.
 - Asegurarse de que Docker Desktop esté abierto y en ejecución antes de iniciar el proyecto.
+
+**Pasos para clonar y levantar el proyecto:**
 
 1. Clonar este repositorio desde la terminal ( CMD ): 
 
