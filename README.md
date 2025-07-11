@@ -12,7 +12,7 @@ Tecnologías utilizadas
 - Tailwind
 - Ajax + JQUERY
 
-## Despliegue con Docker (one-click setup)
+### INSTALACIÓN (one-click setup) ###
 
 Requisitos previos: 
 
